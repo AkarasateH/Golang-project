@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
+import routers "Golang-project/src/routers"
 
 func init() {
 	// Log error if .env file does not exist
@@ -18,13 +17,7 @@ func init() {
 
 func main() {
 	PORT := os.Getenv("PORT")
-	r := gin.Default()
-
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
+	r := routers.SetupRouter()
 	
 	r.Run(":" + PORT)
 }
