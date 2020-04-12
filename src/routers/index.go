@@ -1,6 +1,8 @@
-package functions
+package routers
+
 import (
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
